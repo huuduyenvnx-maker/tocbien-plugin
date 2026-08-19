@@ -1,0 +1,5 @@
+.secrets/
+*.pem
+key.pem
+mcp-publisher
+mcp-publisher.exe

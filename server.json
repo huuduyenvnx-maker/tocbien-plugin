@@ -1,0 +1,21 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "cloud.tocbien/tocbien",
+  "title": "Tốc Biến",
+  "description": "Vietnam VPS via VietQR — create a machine and put an app online.",
+  "version": "1.0.0",
+  "websiteUrl": "https://tocbien.cloud",
+  "icons": [
+    {
+      "src": "https://tocbien.cloud/logo-rocket.png",
+      "mimeType": "image/png",
+      "sizes": ["any"]
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://tocbien.cloud/mcp"
+    }
+  ]
+}

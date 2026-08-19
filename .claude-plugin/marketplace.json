@@ -1,0 +1,18 @@
+{
+  "name": "tocbien",
+  "owner": {
+    "name": "Tốc Biến",
+    "email": "hello@tocbien.cloud"
+  },
+  "metadata": {
+    "description": "Marketplace Tốc Biến — MCP đưa app lên mạng.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "tocbien",
+      "source": "./",
+      "description": "MCP Tốc Biến: tạo VPS, nạp VietQR, đưa app lên mạng."
+    }
+  ]
+}

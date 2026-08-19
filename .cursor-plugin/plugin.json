@@ -1,0 +1,14 @@
+{
+  "name": "tocbien",
+  "version": "1.0.0",
+  "description": "Tốc Biến — tạo VPS Việt Nam, nạp VietQR, đưa app lên mạng từ Cursor.",
+  "author": {
+    "name": "Tốc Biến",
+    "email": "hello@tocbien.cloud"
+  },
+  "homepage": "https://tocbien.cloud",
+  "license": "MIT",
+  "keywords": ["vps", "vietnam", "vietqr", "deploy", "mcp", "tocbien"],
+  "logo": "assets/logo.png",
+  "skills": ["skills/tocbien"]
+}

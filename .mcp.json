@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "tocbien": {
+      "type": "http",
+      "url": "https://tocbien.cloud/mcp"
+    }
+  }
+}
