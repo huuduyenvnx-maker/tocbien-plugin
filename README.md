@@ -1,45 +1,57 @@
-# Tốc Biến — plugin MCP
+# Tốc Biến (TocBien)
 
-Gói **metadata** để gắn MCP Tốc Biến vào Cursor / Claude Code. Không chứa API, không chứa khóa.
+Cursor plugin that connects the agent to [tocbien.cloud](https://tocbien.cloud): create a Vietnam VPS, top up with VietQR, and put a site or app online.
 
-- MCP: `https://tocbien.cloud/mcp` (OAuth Google, không nhét token)
-- Dân no-code: vào [tocbien.cloud](https://tocbien.cloud) → Kết nối AI → lấy mã `tb_act_` rồi dán. Plugin này nằm cửa **nâng cao**.
+This repository is **metadata only** — manifest, MCP URL, and a Vietnamese skill. It does not ship an API, database, or secrets. Auth is **Google OAuth** in Cursor (Authenticate). There is no API key to paste.
 
-## Cài local (trước khi lên store)
+## What it includes
 
-**Cursor:** Settings → MCP → thêm URL trên, hoặc deeplink trong dashboard (Nâng cao).
+- Remote MCP: `https://tocbien.cloud/mcp` (HTTP, OAuth)
+- Skill `tocbien`: Vietnamese flow — pick a plan, confirm price, pay, deploy, report a live URL only after the tools confirm it
+- Logo: `assets/logo.png` (1024×1024)
 
-**Claude Code:**
+Also listed on the official MCP Registry as [`cloud.tocbien/tocbien`](https://registry.modelcontextprotocol.io/?q=cloud.tocbien).
+
+## Install
+
+**Cursor Marketplace** (after listing): search **Tốc Biến** / `tocbien` → Install → Authenticate with Google.
+
+**From this repo (local / review):**
+
+1. Clone `https://github.com/huuduyenvnx-maker/tocbien-plugin`
+2. Cursor → Settings → Plugins → add this folder, **or** Settings → MCP → add URL `https://tocbien.cloud/mcp`
+3. Authenticate with Google when Cursor prompts
+
+No environment variables. No `${API_TOKEN}`.
+
+## How to use
+
+Ask in Vietnamese or English, for example: “tạo máy WordPress”, “nạp VietQR”, “đưa app lên mạng”.
+
+The skill will:
+
+1. Ask what to run (web, WordPress, n8n, chatbot, source) and a machine name
+2. Show Mach plans and wait for you to confirm (creating a VPS spends real credit)
+3. If the balance is short: create a VietQR order and wait for payment
+4. Deploy, then give the live URL only after `list_apps` / `list_vps` say LIVE
+
+No-code users who are not using this plugin can still connect from the dashboard: [tocbien.cloud](https://tocbien.cloud) → Kết nối AI → copy a `tb_act_` code and paste it into the chat.
+
+## Safety
+
+- Creating a VPS or a top-up order moves real money. The agent must confirm with you first.
+- The plugin never invents a live URL.
+- If MCP tools fail twice, it stops and reports the error.
+
+## Other clients
 
 ```bash
 claude mcp add --transport http tocbien https://tocbien.cloud/mcp
-```
-
-Rồi Authenticate Google. Hoặc `/plugin marketplace add <owner>/tocbien-plugin` sau khi repo này public.
-
-**Codex:**
-
-```bash
 codex mcp add tocbien --url https://tocbien.cloud/mcp
 ```
 
-## Nộp store (chủ sản phẩm)
+Then Authenticate / sign in with Google.
 
-1. Tách thư mục này thành repo GitHub **public** (đừng đẩy cả monorepo Tốc Biến — có secret).
-2. Cursor: [cursor.com/marketplace/publish](https://cursor.com/marketplace/publish) — dán link repo.
-3. Claude Code community: [claude.com/docs/plugins/submit](https://claude.com/docs/plugins/submit) — cùng repo. Official Anthropic list không xin được.
-4. MCP Registry: **đã live** — `cloud.tocbien/tocbien` ([registry](https://registry.modelcontextprotocol.io/?q=cloud.tocbien)). Xác thực DNS TXT trên `tocbien.cloud`. Khóa ký ở `.secrets/key.pem`, không commit.
+## License
 
-**Không nộp:** Claude Connectors Directory, ChatGPT Apps — Claude/OpenAI gọi MCP từ cloud của họ, khóa AI Tốc Biến ghim ASN+JA4 → dễ kẹt khi tiêu tiền.
-
-## File
-
-| File | Việc |
-|---|---|
-| `.cursor-plugin/plugin.json` + `mcp.json` | Cursor Marketplace |
-| `.claude-plugin/plugin.json` + `.mcp.json` + `marketplace.json` | Claude Code plugin / marketplace riêng |
-| `skills/tocbien/SKILL.md` | Skill tiếng Việt |
-| `server.json` | Official MCP Registry |
-| `assets/logo.png` | Logo |
-
-MIT. Sản phẩm: [tocbien.cloud](https://tocbien.cloud)
+MIT. Product: [tocbien.cloud](https://tocbien.cloud) · Contact: hello@tocbien.cloud
