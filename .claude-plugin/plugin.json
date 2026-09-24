@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "tocbien",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Tốc Biến — tạo VPS Việt Nam, nạp VietQR, đưa app lên mạng từ Claude Code.",
   "author": {
     "name": "Tốc Biến",
