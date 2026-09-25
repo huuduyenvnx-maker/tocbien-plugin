@@ -1,12 +1,14 @@
 # Tốc Biến (TocBien)
 
-Plugin for **Claude Code, Cursor and ChatGPT** that connects the agent to [tocbien.cloud](https://tocbien.cloud): create a Vietnam VPS, top up with VietQR, and put a site or app online.
+Plugin for **Claude Code, Cursor, Codex and ChatGPT** that connects the agent to [tocbien.cloud](https://tocbien.cloud) and puts a site or app online on a Vietnam VPS. In Claude Code, Cursor and Codex the agent can also pick a plan, top up with VietQR and create the machine; in ChatGPT it works only with machines you already have.
 
 This repository is **metadata only** — manifest, MCP URL, and a Vietnamese skill. It does not ship an API, database, or secrets. Auth is **OAuth 2.1**: your AI app opens the Tốc Biến sign-in page (Google, or email + password), you click **Cho phép** (Allow), done. There is no API key to paste.
 
 ## What it includes
 
-- Remote MCP: `https://tocbien.cloud/mcp` (Streamable HTTP, OAuth 2.1 + PKCE, dynamic client registration)
+- Remote MCP: `https://tocbien.cloud/mcp` (Streamable HTTP, OAuth 2.1 + PKCE, dynamic client registration). One URL, two tool sets, chosen by the app that signs in:
+  - Claude Code, Cursor, Codex — 16 tools: plans, free trial, VietQR top-up orders, create a VPS, deploy, logs, subdomains.
+  - ChatGPT — 9 tools: list machines and apps, deploy, logs, subdomains. No plans, prices, top-ups or purchases inside ChatGPT; the server refuses those calls for ChatGPT sign-ins. Buy or top up at [tocbien.cloud](https://tocbien.cloud).
 - Skill `tocbien`: Vietnamese flow — pick a plan, confirm price, pay, deploy, report a live URL only after the tools confirm it
 - Logo: `assets/logo.png` (1024×1024)
 
@@ -31,7 +33,7 @@ Then run `/mcp`, pick `tocbien` → **Authenticate**. Before you sign in the sta
 
 **Cursor** — Marketplace (after listing): search **Tốc Biến** / `tocbien` → Install → sign in when prompted. From this repo: Settings → Plugins → add this folder, **or** Settings → MCP → add URL `https://tocbien.cloud/mcp`.
 
-**ChatGPT** — Settings → Apps & Connectors → Advanced → Developer mode → Create: URL `https://tocbien.cloud/mcp`, authentication **OAuth**. Then connect and sign in.
+**ChatGPT** — Settings → Apps & Connectors → Advanced → Developer mode → Create: URL `https://tocbien.cloud/mcp`, authentication **OAuth**. Then connect and sign in. ChatGPT gets the 9-tool set: it deploys and manages apps on machines you already have.
 
 **Codex**:
 
